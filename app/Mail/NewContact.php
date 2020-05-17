@@ -31,7 +31,7 @@ class NewContact extends Mailable
     public function build()
     {
         return ($this->from(config('mail.from.address'))
-            ->subject("Có liên hệ mới")
+            ->subject("Khách Ecpark mới")
             ->view('emails.new-contact'));
     }
 
