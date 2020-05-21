@@ -30,8 +30,13 @@ class NewContact extends Mailable
      */
     public function build()
     {
+        if (isset($this->data['title'])) {
+            $title = $this->data['title'];
+        } else {
+            $title = "Có liên hệ mới";
+        }
         return ($this->from(config('mail.from.address'))
-            ->subject("Có liên hệ mới")
+            ->subject($title)
             ->view('emails.new-contact'));
     }
 
