@@ -24,7 +24,7 @@ class MailController extends Controller
         return $retval;
     }
 
-    public function sendEmail(Request $request)
+    public function sendForm(Request $request)
     {
         $retval = [
             'status' => 'fail'
