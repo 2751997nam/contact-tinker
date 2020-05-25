@@ -41,7 +41,8 @@ class MailController extends Controller
 
              dispatch(new SendEmailJob($to, $data));
              $retval = [
-                     'status' => 'successful'
+                     'data' => [],
+                     'code' => 200
                  ];
         }
 
