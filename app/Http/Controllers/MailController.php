@@ -51,7 +51,7 @@ class MailController extends Controller
             $data[$key] = json_encode($value);
         }
 
-        $data['title'] = "Có contact mới từ " . \Request::server('HTTP_REFERER');
+        $data['title'] = "Có contact mới từ " . $_SERVER["HTTP_REFERER"];
 
         dispatch(new SendEmailJob($to, $data));
 
