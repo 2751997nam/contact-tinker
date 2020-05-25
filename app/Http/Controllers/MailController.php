@@ -40,6 +40,10 @@ class MailController extends Controller
             $to = "nthiepvn@gmail.com,tuanh.dhtm@gmail.com,thuhoivon@gmail.com";
             break;
 
+            case '5ebce8c3853d8b259bc16dd2':
+            $to = "cskh.sungrouprealestate@gmail.com,thuhoivon@gmail.com";
+            break;
+
             default:
             $to = "quanbka.cntt@gmail.com";
             break;
