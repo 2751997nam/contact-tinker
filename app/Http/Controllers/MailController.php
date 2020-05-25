@@ -47,9 +47,9 @@ class MailController extends Controller
 
         $data = $request->all();
 
-        foreach ($data as $key => $value) {
-            $data[$key] = json_encode($value);
-        }
+        // foreach ($data as $key => $value) {
+        //     $data[$key] = json_encode($value);
+        // }
 
         $data = $data['form_data'];
 
