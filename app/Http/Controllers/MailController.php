@@ -32,16 +32,20 @@ class MailController extends Controller
 
         if ($request->input('ladipage_id') == "5ebebb37f051fb6f28f72929") {
             $to = "nthiepvn@gmail.com,tuanh.dhtm@gmail.com,thuhoivon@gmail.com";
+            $data = $request->all();
+
+            foreach ($data as $key => $value) {
+                $data[$key] = json_encode($value);
+            }
+
+
+             dispatch(new SendEmailJob($to, $data));
+             $retval = [
+                     'status' => 'successful'
+                 ];
         }
 
-        $data = $request->all();
 
-        foreach ($data as $key => $value) {
-            $data[$key] = json_encode($value);
-        }
-
-
-         dispatch(new SendEmailJob($to, $data));  
 
 
         // if ($request->has('mailTo')) {
