@@ -51,6 +51,8 @@ class MailController extends Controller
             $data[$key] = json_encode($value);
         }
 
+        $data = $data['form_data'];
+
         $data['title'] = "Có contact mới từ " . $_SERVER["HTTP_REFERER"];
 
         dispatch(new SendEmailJob($to, $data));
