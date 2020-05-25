@@ -30,33 +30,35 @@ class MailController extends Controller
             'status' => 'fail'
         ];
 
-        if ($request->input('ladipage_id') == "5ebebb37f051fb6f28f72929") {
+        $ladipage_id = $request->input('ladipage_id');
+        switch ($ladipage_id) {
+            case '5ebebb37f051fb6f28f72929':
             $to = "nthiepvn@gmail.com,tuanh.dhtm@gmail.com,thuhoivon@gmail.com";
-            $data = $request->all();
+            break;
 
-            foreach ($data as $key => $value) {
-                $data[$key] = json_encode($value);
-            }
+            case '5e9a9ff9f16f4f5ac39125db':
+            $to = "nthiepvn@gmail.com,tuanh.dhtm@gmail.com,thuhoivon@gmail.com";
+            break;
 
-
-             dispatch(new SendEmailJob($to, $data));
-             $retval = [
-                     'data' => [],
-                     'code' => 200
-                 ];
+            default:
+            $to = "quanbka.cntt@gmail.com";
+            break;
         }
 
+        $data = $request->all();
 
+        foreach ($data as $key => $value) {
+            $data[$key] = json_encode($value);
+        }
 
+        $data['title'] = "Có contact mới từ " . \Request::server('HTTP_REFERER');
 
-        // if ($request->has('mailTo')) {
-        //     $data = $request->except('mailTo');
-        //     dispatch(new SendEmailJob($request->mailTo, $data));
-        //
-        //     $retval = [
-        //         'status' => 'successful'
-        //     ];
-        // }
+        dispatch(new SendEmailJob($to, $data));
+
+        $retval = [
+            'data' => [],
+            'code' => 200
+        ];
 
         return $retval;
     }
