@@ -16,4 +16,4 @@ $app->get('/', function () use ($app) {
 });
 
 $app->post('/send-email', 'MailController@sendEmail');
-
+$app->post('/2.0/send-form', 'MailController@sendForm');

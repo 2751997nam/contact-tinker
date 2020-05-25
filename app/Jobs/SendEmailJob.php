@@ -31,7 +31,13 @@ class SendEmailJob extends Job
     {
         \Log::info("Doing job");
         \Log::info($this->email);
-        Mail::to($this->email)->send(new NewContact($this->data));
+        $emails = explode("," $this->email);
+        foreach ($emails as $key => $value) {
+            $emails[$key] = trim($value);
+        }
+        Mail::to('quanbka.cntt@gmail.com')
+        ->cc($emails)
+        ->send(new NewContact($this->data));
     }
 
 
