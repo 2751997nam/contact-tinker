@@ -8,10 +8,12 @@
 <body>
     <table>
         @foreach ($data as $key => $value)
+            @if ($key != 'customTitle' && $key != 'customFrom')
             <tr>
                 <td>{{ $key }}:</td>
                 <td>{{ $value }}</td>
             </tr>
+            @endif
         @endforeach
     </table>
 </body>
