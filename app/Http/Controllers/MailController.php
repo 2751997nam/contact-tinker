@@ -14,7 +14,10 @@ class MailController extends Controller
         ];
         if ($request->has('mailTo')) {
             $data = $request->except('mailTo');
-            dispatch(new SendEmailJob($request->mailTo, $data));
+            $mails = explode(',', $request->mailTo);
+            foreach ($mails as $mail) {
+                dispatch(new SendEmailJob($mail, $data));
+            }
 
             $retval = [
                 'status' => 'successful'
