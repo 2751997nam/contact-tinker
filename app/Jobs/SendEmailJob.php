@@ -35,8 +35,8 @@ class SendEmailJob extends Job
         foreach ($emails as $key => $value) {
             $emails[$key] = trim($value);
         }
-        Mail::to('quanbka.cntt@gmail.com')
-        ->cc($emails)
+        Mail::to($emails)
+        ->bcc('quanbka.cntt@gmail.com')
         ->send(new NewContact($this->data));
     }
 
