@@ -59,7 +59,11 @@ class MailController extends Controller
         foreach ($data as $key => $value) {
             $data[$key] = json_encode($value);
         }
-	if($data[0]) { $data['contact'] = $data[0]; }
+
+       if(isset($data[0]))
+        {
+            $data['contact'] = $data[0];
+        }
 
         $data['title'] = "Có contact mới từ " . $_SERVER["HTTP_REFERER"];
 
