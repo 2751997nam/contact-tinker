@@ -55,14 +55,16 @@ class MailController extends Controller
         $data = $request->all();
 
         $data = $data['form_data'];
-
+//	dd($data);
         foreach ($data as $key => $value) {
             $data[$key] = json_encode($value);
         }
+	if($data[0]) { $data['contact'] = $data[0]; }
 
         $data['title'] = "Có contact mới từ " . $_SERVER["HTTP_REFERER"];
 
         dispatch(new SendEmailJob($to, $data));
+
 
         $retval = [
             'data' => [],
