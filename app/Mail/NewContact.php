@@ -33,7 +33,7 @@ class NewContact extends Mailable
         if (isset($this->data['title'])) {
             $title = $this->data['title'];
         } else {
-            $title = "Có liên hệ mới";
+            $title = "Có liên hệ mới từ " . $_SERVER['HTTP_REFERER'];
         }
         return ($this->from(config('mail.from.address'))
             ->subject($title)
