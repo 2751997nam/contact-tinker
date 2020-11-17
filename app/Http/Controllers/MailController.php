@@ -12,16 +12,20 @@ class MailController extends Controller
         $retval = [
             'status' => 'fail'
         ];
+        $returnType = $request->get('return-type', 'json');
         if ($request->has('mailTo')) {
             $data = $request->except('mailTo');
             $mails = explode(',', $request->mailTo);
             foreach ($mails as $mail) {
                 dispatch(new SendEmailJob($mail, $data));
             }
-
-            $retval = [
-                'status' => 'successful'
-            ];
+            if($returnType == 'json') {
+                return [
+                    'status' => 'successful'
+                ];
+            } elseif ($returnType == 'html') {
+                return view('thank-you');
+            }
         }
 
         return $retval;
