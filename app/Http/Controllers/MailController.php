@@ -24,6 +24,7 @@ class MailController extends Controller
                     'status' => 'successful'
                 ];
             } elseif ($returnType == 'html') {
+                return redirect('https://vincom.quangtri.vn/thanks.php');
                 return view('thank-you');
             }
         }
